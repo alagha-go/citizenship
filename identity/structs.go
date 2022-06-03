@@ -15,3 +15,9 @@ type Identity struct {
 	Surname     						string 						`json:"surname" bson:"surname"`    
 	Valid       						bool   						`json:"valid" bson:"valid"`   
 }
+
+
+type Secret struct {
+	MongoDBUrl							string							`json:"mongodb_url,omitempty" bson:"mongodb_url,omitempty"`
+	CurrentIDNumber						int								`json:"current_id_number,omitempty" bson:"current_id_number,omitempty"`
+}
