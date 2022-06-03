@@ -16,6 +16,11 @@ var (
 	Client	*mongo.Client
 )
 
+func Main() {
+	LoadSecret()
+	ConnectToDB()
+}
+
 func LoadSecret() {
 	data, _ := ioutil.ReadFile("./secret.json")
 	json.Unmarshal(data, &SecretData)
