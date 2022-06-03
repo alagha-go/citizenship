@@ -2,9 +2,12 @@ package crawler
 
 import "github.com/gocolly/colly"
 
+var (
+	Names []string
+)
 
-func GetNames() []string {
-	var Names []string
+
+func GetNames(url string) {
 	collector := colly.NewCollector()
 
 	collector.OnHTML("tbody", func(element *colly.HTMLElement) {
@@ -13,8 +16,19 @@ func GetNames() []string {
 		})
 	})
 
-	collector.Visit("https://forebears.io/kenya/forenames")
+	collector.Visit(url)
+}
 
-	println(len(Names))
-	return Names
+
+func GetUrls() []string {
+	var Urls []string
+	collector := colly.NewCollector()
+	collector.OnHTML(".pagination", func (element *colly.HTMLElement) {
+		element.ForEach("a", func(_ int, element *colly.HTMLElement) {
+			url := "https://forebears.io/" + element.Attr("href")
+			Urls = append(Urls, url)
+		})
+	})
+	collector.Visit("https://forebears.io/surnames")
+	return Urls
 }

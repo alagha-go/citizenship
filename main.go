@@ -2,7 +2,7 @@ package main
 
 import (
 	"citizenship/crawler"
-	"citizenship/identity"
+	// "citizenship/identity"
 	"time"
 )
 
@@ -12,9 +12,10 @@ var (
 )
 
 func main() {
-	go SetCookies()
-	time.Sleep(5*time.Second)
-	identity.GetID("Doe", 8, Token, Cookies)
+	// go SetCookies()
+	// time.Sleep(5*time.Second)
+	// identity.GetID("Doe", 8, Token, Cookies)
+	crawler.GetLetters()
 }
 
 func SetCookies() {
