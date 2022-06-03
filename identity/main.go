@@ -28,11 +28,12 @@ func (Secret *Secret) Save() {
 }
 
 func ConnectToDB() {
+	var err error
 	clientOptions := options.Client().
 		ApplyURI(SecretData.MongoDBUrl)
 	ctx := context.Background()
 	
-	Client, err := mongo.Connect(ctx, clientOptions)
+	Client, err = mongo.Connect(ctx, clientOptions)
 	handleError(err)
 }
 
