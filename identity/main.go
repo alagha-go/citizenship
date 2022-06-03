@@ -19,6 +19,7 @@ var (
 
 func Main() {
 	LoadSecret()
+	LoadIDs()
 	ConnectToDB()
 }
 
