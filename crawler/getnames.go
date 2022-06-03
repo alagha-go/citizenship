@@ -10,9 +10,10 @@ var (
 func GetNames(url string) {
 	collector := colly.NewCollector()
 
-	collector.OnHTML("tbody", func(element *colly.HTMLElement) {
-		element.ForEach("td.sur", func (index int, element *colly.HTMLElement) {
-			Names = append(Names, element.Text)
+	collector.OnHTML(".search-results", func(element *colly.HTMLElement) {
+		element.ForEach(".row", func (index int, element *colly.HTMLElement) {
+			name := element.ChildText(".name")
+			Names = append(Names, name)
 		})
 	})
 
