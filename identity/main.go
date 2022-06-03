@@ -14,6 +14,7 @@ import (
 var (
 	SecretData Secret
 	Client	*mongo.Client
+	IDs []Identity
 )
 
 func Main() {
@@ -24,6 +25,11 @@ func Main() {
 func LoadSecret() {
 	data, _ := ioutil.ReadFile("./secret.json")
 	json.Unmarshal(data, &SecretData)
+}
+
+func LoadIDs() {
+	data, _ := ioutil.ReadFile("./DB/ids.json")
+	json.Unmarshal(data, &IDs)
 }
 
 func (Secret *Secret) Save() {
