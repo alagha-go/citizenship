@@ -15,7 +15,7 @@ func main() {
 	// go SetCookies()
 	// time.Sleep(5*time.Second)
 	// identity.GetID("Doe", 8, Token, Cookies)
-	crawler.GetLetters()
+	crawler.GetAllNames()
 }
 
 func SetCookies() {

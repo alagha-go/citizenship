@@ -7,6 +7,15 @@ var (
 )
 
 
+func GetAllNames() []string {
+	urls := GetUrls()
+	for _, url := range urls {
+		GetNames(url)
+	}
+	return Names
+}
+
+
 func GetNames(url string) {
 	collector := colly.NewCollector()
 
