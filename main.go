@@ -3,6 +3,7 @@ package main
 import (
 	"citizenship/crawler"
 	"citizenship/identity"
+	"citizenship/socket"
 	"time"
 )
 
@@ -12,7 +13,8 @@ var (
 )
 
 func main() {
-	GetIDs()
+	go GetIDs()
+	socket.Main()
 }
 
 func SetCookies() {
