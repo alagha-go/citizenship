@@ -25,7 +25,7 @@ func QuerryIDByName(name string) interface{} {
 	return identity.JsonMarshal(IDs)
 }
 
-func OnQuerry(channel *socketio.Channel, querry string) interface{} {
+func OnQuerry(_ *socketio.Channel, querry string) interface{} {
 	_, err := strconv.Atoi(querry)
 	if err != nil {
 		return QuerryIDByName(querry)
