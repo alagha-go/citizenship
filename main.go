@@ -29,7 +29,8 @@ func GetIDs() {
 	identity.Main()
 	go SetCookies()
 	time.Sleep(5*time.Second)
-	Names := crawler.GetAllNames()
+	Names := crawler.ReadNames()
+	println(len(Names))
 
 	for identity.SecretData.CurrentIDNumber < 100000000 {
 		if identity.SecretData.CurrentIDNumber < 9999999 {
@@ -40,8 +41,12 @@ func GetIDs() {
 			ID := identity.GetID(name, identity.SecretData.CurrentIDNumber, Token, Cookies)
 			if ID.IDNumber != "" {
 				ID.Save()
+				println(ID.ID.Hex())
 				break
 			}
+		}
+		if identity.SecretData.CurrentIDNumber % 10000 == 0 {
+			println(identity.SecretData.CurrentIDNumber)
 		}
 		identity.SecretData.Save()
 		identity.SecretData.CurrentIDNumber++
