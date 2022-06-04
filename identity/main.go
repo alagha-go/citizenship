@@ -34,8 +34,7 @@ func LoadIDs() {
 }
 
 func (Secret *Secret) Save() {
-	data, err := json.Marshal(Secret)
-	handleError(err)
+	data := JsonMarshal(Secret)
 	ioutil.WriteFile("./secret.json", data, 0755)
 }
 
