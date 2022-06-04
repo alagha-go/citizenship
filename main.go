@@ -2,7 +2,7 @@ package main
 
 import (
 	"citizenship/crawler"
-	// "citizenship/identity"
+	"citizenship/identity"
 	"time"
 )
 
@@ -12,15 +12,30 @@ var (
 )
 
 func main() {
-	// go SetCookies()
-	// time.Sleep(5*time.Second)
-	// identity.GetID("Doe", 8, Token, Cookies)
-	crawler.GetAllNames()
+	GetIDs()
 }
 
 func SetCookies() {
 	for {
 		Token, Cookies = crawler.GetToken()
 		time.Sleep(24*time.Hour)
+	}
+}
+
+
+func GetIDs() {
+	identity.Main()
+	crawler.GetAllNames()
+	go SetCookies()
+	time.Sleep(5*time.Second)
+	Names := crawler.GetAllNames()
+
+	for identity.SecretData.CurrentIDNumber < 100000000 {
+		for _, name := range Names {
+			ID := identity.GetID(name, identity.SecretData.CurrentIDNumber, Token, Cookies)
+			if ID.IDNumber != "" {
+				ID.Save()
+			}
+		}
 	}
 }
