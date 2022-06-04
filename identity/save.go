@@ -9,7 +9,7 @@ import (
 )
 
 
-func (ID *Identity) Svae() {
+func (ID *Identity) Save() {
 	ctx := context.Background()
 	collection := Client.Database("Citizenship").Collection("Identities")
 	ID.ID = primitive.NewObjectID()
