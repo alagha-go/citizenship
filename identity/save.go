@@ -1,6 +1,7 @@
 package identity
 
 import (
+	"bytes"
 	"context"
 	"encoding/json"
 	"io/ioutil"
@@ -23,4 +24,13 @@ func SaveIDs() {
 	data, err := json.Marshal(IDs)
 	handleError(err)
 	ioutil.WriteFile("./DB/ids.json", data, 0755)
+}
+
+
+func JsonMarshal(data interface{}) []byte {
+	var buff bytes.Buffer
+	encoder := json.NewEncoder(&buff)
+	encoder.SetEscapeHTML(false)
+	encoder.Encode(data)
+	return buff.Bytes()
 }
