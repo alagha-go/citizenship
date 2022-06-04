@@ -20,7 +20,7 @@ func GetNames(url string) {
 	collector := colly.NewCollector()
 
 	collector.OnHTML(".search-results", func(element *colly.HTMLElement) {
-		element.ForEach(".row", func (index int, element *colly.HTMLElement) {
+		element.ForEach(".row", func (_ int, element *colly.HTMLElement) {
 			name := element.ChildText(".name")
 			Names = append(Names, name)
 		})
@@ -39,6 +39,6 @@ func GetUrls() []string {
 			Urls = append(Urls, url)
 		})
 	})
-	collector.Visit("https://forebears.io/surnames")
+	collector.Visit("https://forebears.io/forenames")
 	return Urls
 }

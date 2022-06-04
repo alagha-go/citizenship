@@ -15,7 +15,7 @@ func GetToken() (string, string) {
 	collector.UserAgent = "Mozilla/5.0 (X11; Linux x86_64; rv:100.0) Gecko/20100101 Firefox/100.0"
 
 	collector.OnHTML("head", func(element *colly.HTMLElement) {
-		element.ForEach("meta", func(index int, element *colly.HTMLElement) {
+		element.ForEach("meta", func(_ int, element *colly.HTMLElement) {
 			if element.Attr("name") == "csrf-token" {
 				Token = element.Attr("content")
 				cookies := collector.Cookies("https://accounts.ecitizen.go.ke/register/citizen")
