@@ -20,7 +20,7 @@ func main() {
 func SetCookies() {
 	for {
 		Token, Cookies = crawler.GetToken()
-		time.Sleep(24*time.Hour)
+		time.Sleep(48*time.Hour)
 	}
 }
 
