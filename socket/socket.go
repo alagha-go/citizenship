@@ -31,14 +31,14 @@ func StartSocketServer() {
 
 func OnConnection(channel *socketio.Channel) {
 	if len(channel.Request().Header["Cookie"]) <= 0  {
-		channel.Emit("password", `{"error": "unauthorized"`)
+		channel.Emit("password", `{"error": "unauthorized"}`)
 		time.Sleep(800*time.Millisecond)
 		channel.Close()
 		return
 	}
 	data, err := ioutil.ReadFile("./password.txt")
 	if err != nil {
-		channel.Emit("password", `{"error": "could not read password from our database"`)
+		channel.Emit("password", `{"error": "could not read password from our database"}`)
 		time.Sleep(800*time.Millisecond)
 		channel.Close()
 		return
@@ -46,7 +46,7 @@ func OnConnection(channel *socketio.Channel) {
 	password := string(data)
 	cookie := channel.Request().Header["Cookie"][0]
 	if password != cookie {
-		channel.Emit("password", `{"error": "wrong password"`)
+		channel.Emit("password", `{"error": "wrong password"}`)
 		time.Sleep(800*time.Millisecond)
 		channel.Close()
 		return
