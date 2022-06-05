@@ -40,7 +40,7 @@ func QuerryIDByName(name string) interface{} {
 			}
 		}
 	}
-	return identity.JsonMarshal(IDs)
+	return string(identity.JsonMarshal(IDs))
 }
 
 func OnQuerry(_ *socketio.Channel, querry string) interface{} {
@@ -63,5 +63,5 @@ func QuerryIDByIDName(id string) interface{} {
 			return identity.JsonMarshal(IDs)
 		}
 	}
-	return IDs
+	return string(identity.JsonMarshal(IDs))
 }
