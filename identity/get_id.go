@@ -40,7 +40,6 @@ func GetID(name string, ID int, Token, Cookies string) Identity {
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Println(string(body))
 	json.Unmarshal(body, &Identity)
 	return Identity
 }
