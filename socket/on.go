@@ -62,3 +62,9 @@ func QuerryIDByIDNumber(id string) interface{} {
 	}
 	return string(identity.JsonMarshal(IDs))
 }
+
+
+
+func GetAllIDs() interface{} {
+	return string(identity.JsonMarshal(identity.IDs))
+}
