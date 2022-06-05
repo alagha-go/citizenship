@@ -47,20 +47,17 @@ func OnQuerry(_ *socketio.Channel, querry string) interface{} {
 	_, err := strconv.Atoi(querry)
 	if err != nil {
 		return QuerryIDByName(querry)
-	}else if len(querry) < 8 {
-		return nil
 	}else {
-		return QuerryIDByIDName(querry)
+		return QuerryIDByIDNumber(querry)
 	}
 }
 
 
-func QuerryIDByIDName(id string) interface{} {
+func QuerryIDByIDNumber(id string) interface{} {
 	var IDs []identity.Identity
 	for _, ID := range identity.IDs {
 		if ID.IDNumber == id {
 			IDs = append(IDs, ID)
-			return identity.JsonMarshal(IDs)
 		}
 	}
 	return string(identity.JsonMarshal(IDs))
