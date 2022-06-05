@@ -41,7 +41,7 @@ func GetIDs() {
 			ID := identity.GetID(name, identity.SecretData.CurrentIDNumber, Token, Cookies)
 			if ID.IDNumber != "" {
 				ID.Save()
-				println(ID.ID.Hex())
+				socket.EmitAddedID(ID)
 				break
 			}
 		}
