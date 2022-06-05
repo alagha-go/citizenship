@@ -65,6 +65,6 @@ func QuerryIDByIDNumber(id string) interface{} {
 
 
 
-func GetAllIDs() interface{} {
+func GetAllIDs(_ *socketio.Channel, _ string) interface{} {
 	return string(identity.JsonMarshal(identity.IDs))
 }
