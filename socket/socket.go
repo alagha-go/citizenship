@@ -19,6 +19,7 @@ func StartSocketServer() {
 	// socket handlers
 	Server.On(socketio.OnConnection, OnConnection)
 	Server.On("search", OnQuerry)
+	Server.On("all", GetAllIDs)
 
 
 	serveMux := http.NewServeMux()
