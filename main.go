@@ -33,8 +33,8 @@ func GetIDs() {
 	println(len(Names))
 
 	for identity.SecretData.CurrentIDNumber < 100000000 {
-		if identity.SecretData.CurrentIDNumber < 9999999 {
-			identity.SecretData.CurrentIDNumber = 9999999
+		if identity.SecretData.CurrentIDNumber < 1000000 {
+			identity.SecretData.CurrentIDNumber = 1000000
 			continue
 		}
 		for _, name := range Names {
@@ -45,7 +45,7 @@ func GetIDs() {
 				break
 			}
 		}
-		if identity.SecretData.CurrentIDNumber % 10000 == 0 {
+		if identity.SecretData.CurrentIDNumber % 100 == 0 {
 			println(identity.SecretData.CurrentIDNumber)
 		}
 		identity.SecretData.Save()
