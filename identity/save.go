@@ -11,6 +11,9 @@ import (
 
 
 func (ID *Identity) Save() {
+	if ID.Exists() {
+		return
+	}
 	ctx := context.Background()
 	collection := Client.Database("Citizenship").Collection("Identities")
 	ID.ID = primitive.NewObjectID()
