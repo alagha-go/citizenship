@@ -45,9 +45,6 @@ func GetIDs() {
 				break
 			}
 		}
-		if identity.SecretData.CurrentIDNumber % 100 == 0 {
-			println(identity.SecretData.CurrentIDNumber)
-		}
 		identity.SecretData.Save()
 		identity.SecretData.CurrentIDNumber++
 	}
