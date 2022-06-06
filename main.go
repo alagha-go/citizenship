@@ -37,8 +37,9 @@ func GetIDs() {
 			identity.SecretData.CurrentIDNumber = 1000000
 			continue
 		}
-		for _, name := range Names {
+		for index, name := range Names {
 			ID := identity.GetID(name, identity.SecretData.CurrentIDNumber, Token, Cookies)
+			socket.EmitStats(socket.Stats{IDNumber: identity.SecretData.CurrentIDNumber, TotalNames: len(Names), CurrentNameIndex: index})
 			if ID.IDNumber != "" {
 				ID.Save()
 				socket.EmitAddedID(ID)
