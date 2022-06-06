@@ -9,6 +9,7 @@ func EmitAddedID(ID identity.Identity) {
 }
 
 
-func EmitIDsLength() {
-	Server.BroadcastToAll("ids", len(identity.IDs))
+func EmitStats(statistics Stats) {
+	data := identity.JsonMarshal(statistics)
+	Server.BroadcastToAll("statistics", string(data))
 }
